@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reusable Search Field</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="searchFieldContainer"></div>
+
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const container = document.getElementById('searchFieldContainer');
+      const searchField = createSearchField(container, { url: 'https://example.com/api/items' });
+
+      // Example of how to check loading and error states
+      document.addEventListener('click', () => {
+        const isLoading = searchField.isLoading();
+        const currentError = searchField.getError();
+        const selectedItem = searchField.getSelectedItem();
+
+        console.log("Is Loading:", isLoading);
+        if (currentError) {
+          console.error("Error occurred:", currentError);
+        }
+        if (selectedItem) {
+          console.log("Currently Selected Item:", selectedItem);
+        }
+      });
+    });
+  </script>
+</body>
+</html>
